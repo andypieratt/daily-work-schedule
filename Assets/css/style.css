@@ -4,9 +4,9 @@ body {
   line-height: 1;
 }
 
-textarea{
+.textarea{
   background: transparent;
-  border: none;
+  border: solid;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
