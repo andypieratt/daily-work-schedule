@@ -2,57 +2,72 @@
 var currentDay = moment();
 $("#currentDay").text(currentDay.format("MMMM Do, YYYY"));
 
-var timeBlock = [
-  { hour: "9" },
-  { hour: "10" },
-  { hour: "11" },
-  { hour: "12" },
-  { hour: "1" },
-  { hour: "2" },
-  { hour: "3" },
-  { hour: "4" },
-  { hour: "5" },
-];
+// DOCUMENT SELECTOR VARIABLES
+var $rowNine = $("#row-9");
+var $rowTen = $("#row-10");
+var $rowEleven = $("#row-11");
+var $rowNoon = $("#row-12");
+var $rowOne = $("#row-1");
+var $rowTwo = $("#row-2");
+var $rowThree = $("#row-3");
+var $rowFour = $("#row-4");
+var $rowFive = $("#row-5");
 
-console.log(typeof timeBlock.hour);
-
-var $row = $("#row");
-
-var currentTime = moment().format("h");
-console.log(typeof currentTime);
-// var $row = $(".row");
-// if (timeBlock === currentTime) {
-//   $row.setAttribute("style", ".present");
-// } else if (timeBlock === currentTime) {
-//   $row.setAttribute("style", ".past");
-// }
-
-// THIS ONE WORKS BELOW!!!!!
-// if (timeBlock[0].hour === 9) {
-//   $row.attr("style", "background-color: red;");
-// }
-
-var hourIndex = currentTime;
-
-if (timeBlock[hourIndex].hour === currentTime) {
-  $row.attr("style", "background-color: #ff6961; color: white;");
-} else if (timeBlock[hourIndex].hour < currentTime) {
-  $row.attr("style", "background-color: #d3d3d3; color: white;");
-} else if (timeBlock[hourIndex].hour > currentTime) {
-  $row.attr("style", "background-color: #77dd77; color: white;");
-}
+var $hour = $(".hour");
 
 var $saveBtn = $("#saveBtn");
+
+var $row = $(".row");
+
+// HOUR VARIABLES
+var hours = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+console.log(hours);
+
+// CURRENT HOUR
+var currentHour = moment().hour();
+console.log(currentHour);
+
+// COLOR CODE FUNCTION
+function colorCode() {
+  if (hours[0] === currentHour) {
+    $rowNine.addClass("present");
+  } else if (hours[1] === currentHour) {
+    $rowTen.addClass("present");
+  } else if (hours[2] === currentHour) {
+    $rowEleven.addClass("present");
+  } else if (hours[3] === currentHour) {
+    $rowNoon.addClass("present");
+  } else if (hours[4] === currentHour) {
+    $rowOne.addClass("present");
+  } else if (hours[5] === currentHour) {
+    $rowTwo.addClass("present");
+  } else if (hours[6] === currentHour) {
+    $rowThree.addClass("present");
+  } else if (hours[7] === currentHour) {
+    $rowFour.addClass("present");
+  } else if (hours[8] === currentHour) {
+    $rowFive.addClass("present");
+  } else {
+    $row.addClass("past");
+  }
+}
+
+// COLOR CODE CALL
+colorCode();
+
+// TEXT ENTRY VARIABLES
 var $userInput = $("#user-input");
 
-// SAVE BUTTON CALL/FUNCTION
-$saveBtn.on("click", textField);
+// function saveUserInput(event) {
+//   event.preventDefault();
+//   var userText = $userInput;
+//   localStorage.getItem("toDo");
+//   localStorage.setItem("toDo", (userText));
+// }
 
-// RENDER USER INPUT
-function textField() {
-  // GET CURRENT LOCAL STORAGE DATA
-  var toDoList = JSON.parse(localStorage.getItem("to-do-list"));
-  var toDoItem = $userInput;
-  toDoList.push(toDoItem);
-  localStorage.setItem("to-do-list", JSON.stringify(toDoList));
-}
+$saveBtn.on("click", function (event) {
+  event.preventDefault();
+  var text = document.querySelector("#user-input").value;
+  localStorage.setItem("toDo", text);
+  $userInput.append(text);
+});
