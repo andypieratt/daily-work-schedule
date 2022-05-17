@@ -71,3 +71,16 @@ $saveBtn.on("click", function (event) {
   localStorage.setItem("toDo", text);
   $userInput.append(text);
 });
+
+// // FOR LOOP INITIAL FOR CHANGING COLOR
+// for (let i = 0; i < hours.length; i++) {
+//   console.log("i is ", [i]);
+//   var hourRow = currentHour[i];
+//   if (hourRow === currentHour) {
+//     $row.addClass("present");
+//   } else if (hourRow < currentHour) {
+//     $row.addClass("past");
+//   } else {
+//     $row.addClass("future");
+//   }
+// }
