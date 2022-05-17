@@ -1,0 +1,13 @@
+As a user,
+
+When I open the app...
+  -I am presented with the (title, brief description, time-blocks, and the current date> Moment.js)
+
+When I inspect the page...
+  -I notice that the color of the text-entry field changes colors depending on the current hour
+
+When I click on the text box...
+  -I am able to input some sort of text
+
+When I click on the "save button"...
+  -My text entry is saved to local storage and still displayed when I refresh the page
